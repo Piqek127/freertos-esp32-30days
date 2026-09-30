@@ -68,7 +68,7 @@ idf.py build flash monitor
 
 | Day | Topic                             | Status | Project                       |
 | --- | --------------------------------- | ------ | ----------------------------- |
-| 1–2 | Intro to RTOS & FreeRTOS          | ⬜      | [Day 01–02](Day_01_02_Intro/) |
+| 1–2 | Intro to RTOS & FreeRTOS          | ✅      | [Day 01–02](Day_01_02_Intro/) |
 | 3   | Scheduling & Core Affinity        | ⬜      | [Day 03](Day_03_Scheduling/)  |
 | 4   | Creating & Deleting Tasks         | ⬜      | [Day 04](Day_04_Tasks/)       |
 | 5   | Task States & Priorities          | ⬜      | [Day 05](Day_05_States/)      |
