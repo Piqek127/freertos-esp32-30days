@@ -1,4 +1,4 @@
-# Daily Learning Log — YYYY-MM-DD
+# Daily Learning Log — 2026-09-30
 
 ## 🎯 Goal
 
@@ -17,17 +17,16 @@
 > What concepts finally clicked today?
 
 * **RTOS:**
-  Explanation: A OS that place importance on time and task management. With time splicing/management, it perform more task with less core, FreeTOS is RTOS for esp32 with added API for convenience.
+  A OS that place importance on time and task management. With time splicing/management, it perform more task with less core, FreeTOS is RTOS for esp32 with added API for convenience.
 
-* **How to create a task, how to delay, how to declare, set GPIO pins:**
-
+* **Minor concepts:**
+  How to create a task, how to delay, how to declare, set GPIO pins.
 
 ## 📟 Results
 
 > What happened when I ran it? Include serial output, measurements, or hardware behavior.
 
-```A basic circuit that blinks an led every 500ms.
-```
+*A basic circuit that blinks an led every 500ms.
 
 ![Blinking LED circuit](image&video/Day_1_Circuit.jpeg)
 
