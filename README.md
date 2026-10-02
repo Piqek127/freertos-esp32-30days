@@ -8,7 +8,7 @@ I'm documenting the entire process here: code, experiments, notes, bugs, and thi
 
 **Started:** 2026-09-29
 **Target finish:** 2026-11-01
-**Progress:** `0 / 30`
+**Progress:** `2 / 30`
 
 ---
 
@@ -70,7 +70,7 @@ idf.py build flash monitor
 | --- | --------------------------------- | ------ | ----------------------------- |
 | 1   | Intro to RTOS & FreeRTOS          | ✅      | [Day 01](Day_01_Intro/)       |
 | 2   | ESP-IDF with VS code              | ✅      | [Day 02](Day_02_ESP_IDF/)     |
-| 3   | Scheduling & Core Affinity        | ⬜      | [Day 03](Day_03_Scheduling/)  |
+| 3   | Scheduling & Core Affinity        | ✅      | [Day 03](Day_03_Scheduling/)  |
 | 4   | Creating & Deleting Tasks         | ⬜      | [Day 04](Day_04_Tasks/)       |
 | 5   | Task States & Priorities          | ⬜      | [Day 05](Day_05_States/)      |
 | 6   | `vTaskDelay` vs `vTaskDelayUntil` | ⬜      | [Day 06](Day_06_Delay/)       |
@@ -138,7 +138,7 @@ Each day will ideally contain:
 
 ```text
 Day_XX/
-├── README.md
+├── README.md(For days that need an deep dive)
 ├── CMakeLists.txt
 ├── main/
 │   ├── CMakeLists.txt
@@ -163,7 +163,9 @@ I'll update this section as I progress.
 
 ### Week 1 — Tasks & Scheduling
 
-*
+*Day 01: Learnt the basics of what RTOS and FreeRTOS were.
+*Day 02: Downloaded ESP-IDF extension and got it working on VS code.
+*Day 03: Learnt task scheduling, 4 stages of tasks, core affinites and how an esp32 prioritize tasks.
 
 ### Week 2 — Queues, Semaphores & Mutexes
 
