@@ -71,7 +71,7 @@ idf.py build flash monitor
 | 1   | Intro to RTOS & FreeRTOS          | ✅      | [Day 01](Day_01_Intro/)       |
 | 2   | ESP-IDF with VS code              | ✅      | [Day 02](Day_02_ESP_IDF/)     |
 | 3   | Scheduling & Core Affinity        | ✅      | [Day 03](Day_03_Scheduling/)  |
-| 4   | Creating & Deleting Tasks         | ⬜      | [Day 04](Day_04_Tasks/)       |
+| 4   | Creating & Deleting Tasks         | ✅      | [Day 04](Day_04_Tasks/)       |
 | 5   | Task States & Priorities          | ⬜      | [Day 05](Day_05_States/)      |
 | 6   | `vTaskDelay` vs `vTaskDelayUntil` | ⬜      | [Day 06](Day_06_Delay/)       |
 | 7   | Two LEDs, Two Tasks               | ⬜      | [Day 07](Day_07_Two_LEDs/)    |
@@ -138,7 +138,7 @@ Each day will ideally contain:
 
 ```text
 Day_XX/
-├── README.md(For days that need an deep dive)
+├── README.md (For days that need an deep dive)
 ├── CMakeLists.txt
 ├── main/
 │   ├── CMakeLists.txt
@@ -166,6 +166,8 @@ I'll update this section as I progress.
 *Day 01: Learnt the basics of what RTOS and FreeRTOS were.
 *Day 02: Downloaded ESP-IDF extension and got it working on VS code.
 *Day 03: Learnt task scheduling, 4 stages of tasks, core affinites and how an esp32 prioritize tasks.
+*Day 04: Learnt task handle, creating and deleting tasks. 
+-Note: FreeRTOS doesn't clear my handle variable after vTaskDelete. I must set it to NULL myself, and a self-deleting task has to do it before calling vTaskDelete(NULL).
 
 ### Week 2 — Queues, Semaphores & Mutexes
 
