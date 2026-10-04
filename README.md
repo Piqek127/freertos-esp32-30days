@@ -162,12 +162,13 @@ The daily README will document:
 I'll update this section as I progress.
 
 ### Week 1 — Tasks & Scheduling
-
-*Day 01: Learnt the basics of what RTOS and FreeRTOS were.
-*Day 02: Downloaded ESP-IDF extension and got it working on VS code.
-*Day 03: Learnt task scheduling, 4 stages of tasks, core affinites and how an esp32 prioritize tasks.
-*Day 04: Learnt task handle, creating and deleting tasks. 
--Note: FreeRTOS doesn't clear my handle variable after vTaskDelete. I must set it to NULL myself, and a self-deleting task has to do it before calling vTaskDelete(NULL).
+* Day 01: Learnt the basics of what RTOS and FreeRTOS were. 
+* Day 02: Downloaded ESP-IDF extension and got it working on VS code.
+* Day 03: Learnt task scheduling, 4 stages of tasks, core affinites and how an esp32 prioritize tasks.
+* Day 04: Learnt task handle, creating and deleting tasks. 
+    - Note: FreeRTOS doesn't clear handle variable after vTaskDelete. I must set it to NULL myself, and a self-deleting task has to do it before calling vTaskDelete(NULL).
+* Day 05:Learnt more about stages of a task and priorities.
+![Serial monitor output](images/Task_states.png)
 
 ### Week 2 — Queues, Semaphores & Mutexes
 
