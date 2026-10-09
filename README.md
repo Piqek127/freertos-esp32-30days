@@ -102,7 +102,7 @@ idf.py build flash monitor
 
 | Day | Topic | Status | Project |
 |---:|---|:---:|---|
-| 08 | Queue Usage | ⬜ | [Day 08](Day_08_Queue_Monitor/) |
+| 08 | Queue Usage | ✅ | [Day 08](Day_08_Queue_Monitor/) |
 | 09 | Queues with ISRs | ⬜ | [Day 09](Day_09_Queue_ISR/) |
 | 10 | Binary Semaphores | ⬜ | [Day 10](Day_10_Binary_Sem/) |
 | 11 | Counting Semaphores | ⬜ | [Day 11](Day_11_Counting_Sem/) |
@@ -209,7 +209,10 @@ Notes from each day, including what I learned and anything worth revisiting.
 
 ### Week 2 — Queues, Semaphores & Mutexes
 
-- *Coming soon.*
+**Day 08 — Queue theory and practice**
+- Learned queues, how to create, send, receive and manipulate them.
+- Completed the queue challenge.
+- More notes and observations to be added.
 
 ### Week 3 — Events, Notifications, Timers & Memory
 

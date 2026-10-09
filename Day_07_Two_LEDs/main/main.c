@@ -45,6 +45,7 @@
 
 TaskHandle_t taskA_handle= NULL;
 
+//Inline mean pasting the entire code when called
 static inline void configure_led(gpio_num_t pin)
 {
     // Configure pin as output and start low
@@ -86,7 +87,7 @@ static void taskA_delay(void *pv)
 {
     const TickType_t period_ticks = pdMS_TO_TICKS(500); // 500 ms
     uint32_t iteration = 0;
-
+    //Esp log function with I(info) tag
     ESP_LOGI(TAG, "Task A (vTaskDelay) started on core %d", xPortGetCoreID());
 
     while (1) {
@@ -96,6 +97,7 @@ static void taskA_delay(void *pv)
         // Print a timestamp (ms) to visualize drift
         TickType_t now_ticks = xTaskGetTickCount();
         uint32_t now_ms = now_ticks * portTICK_PERIOD_MS;
+        //PRIu32 automatically fit %...  based on system currently
         ESP_LOGI(TAG, "[A] t=%" PRIu32 " ms, iter=%" PRIu32, now_ms, iteration);
 
         // Relative delay: next wake-up occurs 'period_ticks' after this call
