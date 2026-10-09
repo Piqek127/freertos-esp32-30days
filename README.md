@@ -1,14 +1,39 @@
 # FreeRTOS on ESP32 — 30-Day Challenge
 
-> My attempt to complete ACLAB's 30-Day RTOS Challenge and learn **FreeRTOS, ESP-IDF, and real-time embedded programming** on the ESP32.
+My attempt to complete [ACLAB's 30-Day RTOS Challenge](https://github.com/nhanksd85/ACLAB_Challanges_RTOS_30Days) and learn **FreeRTOS, ESP-IDF, and real-time embedded programming** on the ESP32.
 
 I'm documenting the entire process here: code, experiments, notes, bugs, and things I misunderstood along the way.
 
-**Curriculum:** [ACLAB 30-Day RTOS Challenge](https://github.com/nhanksd85/ACLAB_Challanges_RTOS_30Days)
+<p align="center">
+  <img src="https://img.shields.io/badge/Platform-ESP32-E7352C?style=flat-square&logo=espressif" alt="ESP32" />
+  <img src="https://img.shields.io/badge/Framework-ESP--IDF-blue?style=flat-square" alt="ESP-IDF" />
+  <img src="https://img.shields.io/badge/Language-C-00599C?style=flat-square&logo=c" alt="C" />
+  <img src="https://img.shields.io/badge/Progress-7%2F30-orange?style=flat-square" alt="Progress: 7 of 30 days" />
+</p>
 
-**Started:** 2026-09-29
-**Target finish:** 2026-11-01
-**Progress:** `2 / 30`
+| | Details |
+|---|---|
+| **Started** | September 29, 2026 |
+| **Target finish** | November 1, 2026 |
+| **Progress** | 7 / 30 days |
+| **Board** | ESP32-DevKitC / Velxio simulator |
+| **Framework** | ESP-IDF |
+| **Language** | C |
+
+---
+
+## Table of Contents
+
+- [Goals](#-goals)
+- [Development Setup](#️-development-setup)
+- [Build, Flash, and Monitor](#-build-flash-and-monitor)
+- [30-Day Progress](#-30-day-progress)
+- [Repository Structure](#-repository-structure)
+- [Key Takeaways](#-key-takeaways)
+- [Things I Got Wrong](#-things-i-got-wrong)
+- [Capstone Project](#-capstone-project)
+- [What I'd Do Differently](#-what-id-do-differently)
+- [Resources](#-resources)
 
 ---
 
@@ -16,33 +41,31 @@ I'm documenting the entire process here: code, experiments, notes, bugs, and thi
 
 By the end of this challenge, I want to be comfortable with:
 
-* FreeRTOS tasks and scheduling
-* Task priorities and states
-* Queues, semaphores, mutexes, and notifications
-* Interrupts and ISRs
-* Timers and memory management
-* ESP32 multicore programming
-* Debugging and runtime monitoring
-* Basic real-time performance considerations
+- [ ] FreeRTOS tasks and scheduling
+- [ ] Task priorities and states
+- [ ] Queues, semaphores, mutexes, and task notifications
+- [ ] Interrupts and ISRs
+- [ ] Software timers and memory management
+- [ ] ESP32 multicore programming
+- [ ] Debugging and runtime monitoring
+- [ ] Basic real-time performance considerations
 
 More importantly, I want to be able to **design and debug small multitasking embedded systems myself**, rather than simply copying FreeRTOS examples.
 
----
+## 🛠️ Development Setup
 
-## 🛠️ Setup
+| Component | Details |
+|---|---|
+| Board | ESP32-DevKitC / Velxio simulator |
+| Framework | ESP-IDF |
+| Language | C |
+| Editor | VS Code + ESP-IDF Extension |
+| OS | Windows / Linux |
+| Hardware | LEDs, resistors, button, breadboard |
 
-| Component | Details                             |
-| --------- | ----------------------------------- |
-| Board     | ESP32-DevKitC / Velxio simulator    |
-| Framework | ESP-IDF                             |
-| Language  | C                                   |
-| Editor    | VS Code + ESP-IDF Extension         |
-| OS        | Windows / Linux                     |
-| Hardware  | LEDs, resistors, button, breadboard |
+### Build, Flash, and Monitor
 
-### Build / Flash / Monitor
-
-From inside a day's project directory:
+Run these commands from inside a day's project directory:
 
 ```bash
 idf.py set-target esp32
@@ -51,7 +74,7 @@ idf.py flash
 idf.py monitor
 ```
 
-Or, once the project is configured:
+Or combine the operations once the project is configured:
 
 ```bash
 idf.py build flash monitor
@@ -59,86 +82,88 @@ idf.py build flash monitor
 
 ---
 
-# 📚 30-Day Progress
+## 📚 30-Day Progress
 
-**Legend:**
-⬜ Not started · 🟨 In progress · ✅ Complete
+**Legend:** ✅ Complete · 🟨 In Progress · ⬜ Not Started
 
 ### Week 1 — Tasks & Scheduling
 
-| Day | Topic                             | Status | Project                       |
-| --- | --------------------------------- | ------ | ----------------------------- |
-| 1   | Intro to RTOS & FreeRTOS          | ✅      | [Day 01](Day_01_Intro/)       |
-| 2   | ESP-IDF with VS code              | ✅      | [Day 02](Day_02_ESP_IDF/)     |
-| 3   | Scheduling & Core Affinity        | ✅      | [Day 03](Day_03_Scheduling/)  |
-| 4   | Creating & Deleting Tasks         | ✅      | [Day 04](Day_04_Tasks/)       |
-| 5   | Task States & Priorities          | ⬜      | [Day 05](Day_05_States/)      |
-| 6   | `vTaskDelay` vs `vTaskDelayUntil` | ⬜      | [Day 06](Day_06_Delay/)       |
-| 7   | Two LEDs, Two Tasks               | ⬜      | [Day 07](Day_07_Two_LEDs/)    |
+| Day | Topic | Status | Project |
+|---:|---|:---:|---|
+| 01 | Introduction to RTOS & FreeRTOS | ✅ | [Day 01](Day_01_Intro/) |
+| 02 | ESP-IDF Setup with VS Code | ✅ | [Day 02](Day_02_ESP_IDF/) |
+| 03 | Scheduling & Core Affinity | ✅ | [Day 03](Day_03_Scheduling/) |
+| 04 | Creating & Deleting Tasks | ✅ | [Day 04](Day_04_Tasks/) |
+| 05 | Task States & Priorities | ✅ | [Day 05](Day_05_States/) |
+| 06 | `vTaskDelay()` vs. `vTaskDelayUntil()` | ✅ | [Day 06](Day_06_Delay/) |
+| 07 | Two LEDs, Two Tasks | ✅ | [Day 07](Day_07_Two_LEDs/) |
 
 ### Week 2 — Communication & Synchronization
 
-| Day | Topic                       | Status | Project                         |
-| --- | --------------------------- | ------ | ------------------------------- |
-| 8   | Queue Usage                 | ⬜      | [Day 08](Day_08_Queue_Monitor/) |
-| 9   | Queues with ISRs            | ⬜      | [Day 09](Day_09_Queue_ISR/)     |
-| 10  | Binary Semaphores           | ⬜      | [Day 10](Day_10_Binary_Sem/)    |
-| 11  | Counting Semaphores         | ⬜      | [Day 11](Day_11_Counting_Sem/)  |
-| 12  | Mutexes & Recursive Mutexes | ⬜      | [Day 12](Day_12_Mutexes/)       |
-| 13  | Priority Inversion          | ⬜      | [Day 13](Day_13_Inversion/)     |
-| 14  | UART Logger + Mutex         | ⬜      | [Day 14](Day_14_UART_Logger/)   |
+| Day | Topic | Status | Project |
+|---:|---|:---:|---|
+| 08 | Queue Usage | ⬜ | [Day 08](Day_08_Queue_Monitor/) |
+| 09 | Queues with ISRs | ⬜ | [Day 09](Day_09_Queue_ISR/) |
+| 10 | Binary Semaphores | ⬜ | [Day 10](Day_10_Binary_Sem/) |
+| 11 | Counting Semaphores | ⬜ | [Day 11](Day_11_Counting_Sem/) |
+| 12 | Mutexes & Recursive Mutexes | ⬜ | [Day 12](Day_12_Mutexes/) |
+| 13 | Priority Inversion | ⬜ | [Day 13](Day_13_Inversion/) |
+| 14 | UART Logger + Mutex | ⬜ | [Day 14](Day_14_UART_Logger/) |
 
 ### Week 3 — Advanced FreeRTOS
 
-| Day | Topic                    | Status | Project                         |
-| --- | ------------------------ | ------ | ------------------------------- |
-| 15  | Event Groups             | ⬜      | [Day 15](Day_15_Event_Groups/)  |
-| 16  | Task Notifications       | ⬜      | [Day 16](Day_16_Notifications/) |
-| 17  | Stream & Message Buffers | ⬜      | [Day 17](Day_17_Buffers/)       |
-| 18  | Software Timers          | ⬜      | [Day 18](Day_18_Timers/)        |
-| 19  | Memory Management        | ⬜      | [Day 19](Day_19_Memory/)        |
-| 20  | Interrupt Management     | ⬜      | [Day 20](Day_20_Interrupts/)    |
-| 21  | Idle & Daemon Tasks      | ⬜      | [Day 21](Day_21_Idle_Daemon/)   |
+| Day | Topic | Status | Project |
+|---:|---|:---:|---|
+| 15 | Event Groups | ⬜ | [Day 15](Day_15_Event_Groups/) |
+| 16 | Task Notifications | ⬜ | [Day 16](Day_16_Notifications/) |
+| 17 | Stream & Message Buffers | ⬜ | [Day 17](Day_17_Buffers/) |
+| 18 | Software Timers | ⬜ | [Day 18](Day_18_Timers/) |
+| 19 | Memory Management | ⬜ | [Day 19](Day_19_Memory/) |
+| 20 | Interrupt Management | ⬜ | [Day 20](Day_20_Interrupts/) |
+| 21 | Idle & Daemon Tasks | ⬜ | [Day 21](Day_21_Idle_Daemon/) |
 
 ### Week 4 — Debugging & Performance
 
-| Day   | Topic                      | Status | Project                        |
-| ----- | -------------------------- | ------ | ------------------------------ |
-| 22    | Tick Rate & Tickless Idle  | ⬜      | [Day 22](Day_22_Tick/)         |
-| 23    | Debugging FreeRTOS Apps    | ⬜      | [Day 23](Day_23_Debugging/)    |
-| 24    | Power Management           | ⬜      | [Day 24](Day_24_Power/)        |
-| 25    | Inter-Task Communication   | ⬜      | [Day 25](Day_25_Integration/)  |
-| 26    | Real-Time Trace Debugging  | ⬜      | [Day 26](Day_26_Trace/)        |
-| 27    | Error Handling & Watchdogs | ⬜      | [Day 27](Day_27_Watchdogs/)    |
-| 28    | Real-Time Performance      | ⬜      | [Day 28](Day_28_Optimization/) |
-| 29–30 | **Capstone Project**       | ⬜      | [Capstone](Capstone/)          |
+| Day | Topic | Status | Project |
+|---:|---|:---:|---|
+| 22 | Tick Rate & Tickless Idle | ⬜ | [Day 22](Day_22_Tick/) |
+| 23 | Debugging FreeRTOS Applications | ⬜ | [Day 23](Day_23_Debugging/) |
+| 24 | Power Management | ⬜ | [Day 24](Day_24_Power/) |
+| 25 | Inter-Task Communication | ⬜ | [Day 25](Day_25_Integration/) |
+| 26 | Real-Time Trace Debugging | ⬜ | [Day 26](Day_26_Trace/) |
+| 27 | Error Handling & Watchdogs | ⬜ | [Day 27](Day_27_Watchdogs/) |
+| 28 | Real-Time Performance & Optimization | ⬜ | [Day 28](Day_28_Optimization/) |
+| 29–30 | **Capstone Project** | ⬜ | [Capstone](Capstone/) |
 
 ---
 
-# 📁 Repository Structure
+## 📁 Repository Structure
 
 ```text
 .
 ├── README.md
-│
 ├── docs/
 │   ├── cheatsheet.md
 │   └── common-mistakes.md
-│
-├── Day_01_02_Intro/
+├── Day_01_Intro/
+├── Day_02_ESP_IDF/
 ├── Day_03_Scheduling/
 ├── Day_04_Tasks/
+├── Day_05_States/
+├── Day_06_Delay/
+├── Day_07_Two_LEDs/
 ├── ...
 ├── Day_28_Optimization/
-│
 └── Capstone/
 ```
 
-Each day will ideally contain:
+### Daily Project Structure
+
+Each day will ideally contain the following files, with a README for topics that need a deeper explanation:
 
 ```text
 Day_XX/
-├── README.md (For days that need an deep dive)
+├── README.md
 ├── CMakeLists.txt
 ├── main/
 │   ├── CMakeLists.txt
@@ -146,55 +171,75 @@ Day_XX/
 └── images/
 ```
 
-The daily README will document:
-
-* **Goal** — what I was trying to learn
-* **Implementation** — what I built
-* **What I learned** — concepts that finally clicked
-* **Results** — serial output / hardware behavior
-* **Gotchas** — bugs and mistakes
-* **Things I still don't understand**
-
 ---
 
-# 🧠 Key Takeaways
+## 🧠 Key Takeaways
 
-I'll update this section as I progress.
+Notes from each day, including what I learned and anything worth revisiting.
 
 ### Week 1 — Tasks & Scheduling
-* Day 01: Learnt the basics of what RTOS and FreeRTOS were. 
-* Day 02: Downloaded ESP-IDF extension and got it working on VS code.
-* Day 03: Learnt task scheduling, 4 stages of tasks, core affinites and how an esp32 prioritize tasks.
-* Day 04: Learnt task handle, creating and deleting tasks. 
-    - Note: FreeRTOS doesn't clear handle variable after vTaskDelete. I must set it to NULL myself, and a self-deleting task has to do it before calling vTaskDelete(NULL).
-* Day 05:Learnt more about stages of a task and priorities.
-![Serial monitor output](images/Task_states.png)
+
+**Day 01 — Introduction to RTOS & FreeRTOS**
+- Learned the basics of RTOS concepts and FreeRTOS.
+
+**Day 02 — ESP-IDF Setup**
+- Installed the ESP-IDF extension and got the development environment working in VS Code.
+
+**Day 03 — Scheduling & Core Affinity**
+- Learned about task scheduling, task states, core affinity, and how task priorities affect execution on the ESP32.
+
+**Day 04 — Creating & Deleting Tasks**
+- Learned about task handles, task creation, and task deletion.
+- **Important note:** `vTaskDelete()` does not automatically set the application's task-handle variable to `NULL`. I need to manage that variable myself. A task deleting itself with `vTaskDelete(NULL)` should not rely on code after that call to perform cleanup.
+
+**Day 05 — Task States & Priorities**
+- Learned more about task states and priorities.
+
+![Serial monitor output showing task states](images/Task_states.png)
+
+**Day 06 — Task Delays**
+- Learned the differences between `vTaskDelay()` and `vTaskDelayUntil()`.
+- **Extra:** Implemented the sensor-sampling portion of the challenge using an HY-SRF05 ultrasonic sensor.
+
+![Serial monitor output showing task states](images/Blink_led_and_sample_sensor_project.jpeg)
+
+**Day 07 — Two LEDs, Two Tasks**
+- Completed the two-LED multitasking exercise.
+- More notes and observations to be added.
 
 ### Week 2 — Queues, Semaphores & Mutexes
 
-*
+- *Coming soon.*
 
 ### Week 3 — Events, Notifications, Timers & Memory
 
-*
+- *Coming soon.*
 
 ### Week 4 — Debugging, Power & Watchdogs
 
-*
+- *Coming soon.*
 
 ---
 
-# 🐛 Things I Got Wrong
+## 🐛 Things I Got Wrong
 
-This is where I'll record misconceptions and mistakes that were useful to learn from.
+A record of misconceptions, bugs, and mistakes that helped me understand the underlying concepts.
 
-1. **Day X:** I thought `...`, but actually `...`.
-2. **Day X:**
-3. **Day X:**
+The goal is not just to document what worked, but also **why something failed and what I learned from it**.
+
+1. **Day X — [Misconception]**
+   - **What I thought:** ...
+   - **What is actually happening:** ...
+   - **Lesson learned:** ...
+
+2. **Day X — [Bug or unexpected behavior]**
+   - **What happened:** ...
+   - **Root cause:** ...
+   - **Fix:** ...
 
 ---
 
-# 🚀 Capstone
+## 🚀 Capstone Project
 
 The final project will combine concepts learned throughout the challenge into a small real-time embedded system.
 
@@ -202,45 +247,42 @@ The final project will combine concepts learned throughout the challenge into a 
 
 **TBD**
 
-### Concepts used
+### Planned Concepts
 
-* Tasks
-* Scheduling
-* Inter-task communication
-* Synchronization
-* Interrupts
-* Timers
-* Error handling
-* Debugging
+- Tasks and scheduling
+- Inter-task communication
+- Synchronization
+- Interrupts
+- Timers
+- Error handling and watchdogs
+- Debugging and runtime monitoring
 
 ### Demo
 
-Coming later.
+*Coming soon.*
 
 ---
 
-# 🤔 What I'd Do Differently
+## 🤔 What I'd Do Differently
 
-I'll fill this in after completing the challenge.
+After completing the challenge, I'll reflect on:
 
-Things I'll evaluate:
-
-* Was the 30-day pacing realistic?
-* Which topics required the most time?
-* Which resources were most useful?
-* What concepts should I have learned earlier?
-* What would I change if I did the challenge again?
+- Was the 30-day pacing realistic?
+- Which topics required the most time?
+- Which resources were the most useful?
+- Which concepts should I have learned earlier?
+- What would I change if I did the challenge again?
 
 ---
 
-# 📖 Resources
+## 📖 Resources
 
-* [ACLAB 30-Day RTOS Challenge](https://github.com/nhanksd85/ACLAB_Challanges_RTOS_30Days)
-* *Mastering the FreeRTOS Real Time Kernel*
-* ESP-IDF FreeRTOS documentation
+- [ACLAB — 30-Day RTOS Challenge](https://github.com/nhanksd85/ACLAB_Challanges_RTOS_30Days)
+- *Mastering the FreeRTOS Real Time Kernel*
+- [ESP-IDF Programming Guide](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/)
 
 ---
 
-## License
+## 📄 License
 
-MIT
+This project is licensed under the MIT License. See [`LICENSE`](LICENSE) for details.
