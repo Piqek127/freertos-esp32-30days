@@ -103,8 +103,8 @@ idf.py build flash monitor
 | Day | Topic | Status | Project |
 |---:|---|:---:|---|
 | 08 | Queue Usage | ✅ | [Day 08](Day_08_Queue_Monitor/) |
-| 09 | Queues with ISRs | ⬜ | [Day 09](Day_09_Queue_ISR/) |
-| 10 | Binary Semaphores | ⬜ | [Day 10](Day_10_Binary_Sem/) |
+| 09 | Queues with ISRs | ✅ | [Day 09](Day_09_Queue_ISR/) |
+| 10 | Binary Semaphores | ✅ | [Day 10](Day_10_Binary_Sem/) |
 | 11 | Counting Semaphores | ⬜ | [Day 11](Day_11_Counting_Sem/) |
 | 12 | Mutexes & Recursive Mutexes | ⬜ | [Day 12](Day_12_Mutexes/) |
 | 13 | Priority Inversion | ⬜ | [Day 13](Day_13_Inversion/) |
@@ -213,6 +213,14 @@ Notes from each day, including what I learned and anything worth revisiting.
 - Learned queues, how to create, send, receive and manipulate them.
 - Completed the queue challenge.
 - More notes and observations to be added.
+
+**Day 09 — Using Queues with ISRs**
+- Learned ISR, mutexes how to use queues with ISR and what woken flags does.
+
+**Day 10 — Binary Semaphores**
+- Learned about semaphores, why its different from queue and mutexes.
+- Had a preview about event group.
+
 
 ### Week 3 — Events, Notifications, Timers & Memory
 
