@@ -105,10 +105,10 @@ idf.py build flash monitor
 | 08 | Queue Usage | ✅ | [Day 08](Day_08_Queue_Monitor/) |
 | 09 | Queues with ISRs | ✅ | [Day 09](Day_09_Queue_ISR/) |
 | 10 | Binary Semaphores | ✅ | [Day 10](Day_10_Binary_Sem/) |
-| 11 | Counting Semaphores | ⬜ | [Day 11](Day_11_Counting_Sem/) |
-| 12 | Mutexes & Recursive Mutexes | ⬜ | [Day 12](Day_12_Mutexes/) |
-| 13 | Priority Inversion | ⬜ | [Day 13](Day_13_Inversion/) |
-| 14 | UART Logger + Mutex | ⬜ | [Day 14](Day_14_UART_Logger/) |
+| 11 | Counting Semaphores | ✅ | [Day 11](Day_11_Counting_Sem/) |
+| 12 | Mutexes & Recursive Mutexes | ✅ | [Day 12](Day_12_Mutexes/) |
+| 13 | Priority Inversion | ✅ | [Day 13](Day_13_Inversion/) |
+| 14 | UART Logger + Mutex | ✅ | [Day 14](Day_14_UART_Logger/) |
 
 ### Week 3 — Advanced FreeRTOS
 
@@ -221,10 +221,23 @@ Notes from each day, including what I learned and anything worth revisiting.
 - Learned about semaphores, why its different from queue and mutexes.
 - Had a preview about event group.
 
+**Day 11 — Counting Semaphores**
+- Learned about counting semaphores.
+
+**Day 12 — Mutexes and Recursive Mutexes**
+- Learned about mutexes and priority inheritance.
+
+**Day 13 — Avoiding Priority Inversion**
+- Learned about priority inversion.
+
+**Day 14 — Hands-on Mini Project: UART Logger with Mutex**
+- Learned more about mutexes, what happens when a critical resource doesnt have it and learned about queue loggers, how it can be used to replace mutexes and make them copatiple with ISRs.
 
 ### Week 3 — Events, Notifications, Timers & Memory
 
-- *Coming soon.*
+**Day 15 — Event Groups**
+- Learned about event groups.
+
 
 ### Week 4 — Debugging, Power & Watchdogs
 
