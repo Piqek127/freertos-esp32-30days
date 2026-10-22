@@ -15,7 +15,7 @@ I'm documenting the entire process here: code, experiments, notes, bugs, and thi
 |---|---|
 | **Started** | September 29, 2026 |
 | **Target finish** | November 1, 2026 |
-| **Progress** | 7 / 30 days |
+| **Progress** | 16 / 30 days |
 | **Board** | ESP32-DevKitC / Velxio simulator |
 | **Framework** | ESP-IDF |
 | **Language** | C |
@@ -114,13 +114,13 @@ idf.py build flash monitor
 
 | Day | Topic | Status | Project |
 |---:|---|:---:|---|
-| 15 | Event Groups | ⬜ | [Day 15](Day_15_Event_Groups/) |
-| 16 | Task Notifications | ⬜ | [Day 16](Day_16_Notifications/) |
-| 17 | Stream & Message Buffers | ⬜ | [Day 17](Day_17_Buffers/) |
-| 18 | Software Timers | ⬜ | [Day 18](Day_18_Timers/) |
-| 19 | Memory Management | ⬜ | [Day 19](Day_19_Memory/) |
-| 20 | Interrupt Management | ⬜ | [Day 20](Day_20_Interrupts/) |
-| 21 | Idle & Daemon Tasks | ⬜ | [Day 21](Day_21_Idle_Daemon/) |
+| 15 | Event Groups | ✅ | [Day 15](Day_15_Event_Groups/) |
+| 16 | Task Notifications | ✅ | [Day 16](Day_16_Notifications/) |
+| 17 | Stream & Message Buffers | ✅ | [Day 17](Day_17_Buffers/) |
+| 18 | Software Timers | ✅ | [Day 18](Day_18_Timers/) |
+| 19 | Memory Management | ✅ | [Day 19](Day_19_Memory/) |
+| 20 | Interrupt Management | ✅ | [Day 20](Day_20_Interrupts/) |
+| 21 | Idle & Daemon Tasks | ✅ | [Day 21](Day_21_Idle_Daemon/) |
 
 ### Week 4 — Debugging & Performance
 
@@ -238,7 +238,29 @@ Notes from each day, including what I learned and anything worth revisiting.
 **Day 15 — Event Groups**
 - Learned about event groups.
 
+**Day 16 — Task Notifications**
+- Learned about Task Notifications.
+- A notification is a 32-bit value built into each task, so no queue or semaphore object is needed. The sender needs the receiver's task handle.
+- Counter style: `xTaskNotifyGive` / `eIncrement` (the value argument is ignored/ treated as a count) pairs with `ulTaskNotifyTake`.
+  - `pdTRUE`: returns the count `n`, then resets it to 0 (handle events as a batch).
+  - `pdFALSE`: counts down by 1 per take (handle events one at a time).
+- Value/flag style: `eSetBits` or `eSetValue...` (take the actual value) pairs with `xTaskNotifyWait`. Don't mix the two styles on one task.
+- Limits: it has one receiver and holds one value, so unread values get overwritten. Use a queue if every value matters.
+![Serial monitor output showing task states](images/Diffrientiating.png)
 
+**Day 17 - Stream Buffers and Message Buffers**
+- Learned about stream and message buffers and when to use them over queues.
+- Stream buffers: Has 3 important sizes: the size of the message sent, the size of the buffer and the size of the amount of info the buffer will process after waking up.
+
+**Day 18 - Software Timers**
+- Learned about software timers, callbacks, one-shot and periodic timers.
+
+**Day 19 - Memory Management in FreeRTOS**
+- The stack: is memory that is managed automatically, in strict last-in-first-out order. Every time a function is called, a chunk of stack is set aside for its local variables; when the function returns, that chunk is released instantly.
+- The heap is memory you request manually, in any size, at any time, and it stays yours until you release it. Unlike the stack, it isn’t tied to a function’s lifetime.
+- Learned how to create static(stack) tasks.
+- Dynamic is fine for most tasks, especially during development and for tasks created once at startup.
+- Static is better for critical tasks that must always start successfully, for long-running devices where fragmentation is a worry, and for safety-critical systems where you need to prove memory use in advance.
 ### Week 4 — Debugging, Power & Watchdogs
 
 - *Coming soon.*
